@@ -61,7 +61,7 @@ class Tech:
     
     async def authenticate(self, username, password):
         path = "authentication"
-        post_data = '{"username": "' + username + '", "password": "' + password + '"}'
+        post_data = '{"username": "' + username + '", "password": "' + password.replace('"', '\\"') + '"}'
         result = await self.post(path, post_data)
         self.authenticated = result["authenticated"]
         if self.authenticated:
